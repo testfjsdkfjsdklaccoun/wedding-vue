@@ -30,7 +30,7 @@
         </h2>
 
         <h1 class="text-6xl md:text-8xl italic leading-tight">
-          Tanvir
+          XYZ
           <span class="block text-pink-500">&</span>
           Partner
         </h1>
