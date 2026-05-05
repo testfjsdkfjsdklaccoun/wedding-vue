@@ -204,9 +204,21 @@ const toggleMusic = () => {
 
 onMounted(() => {
   if (audioRef.value) {
+
+    // 🔥 Trick: start muted
+    audioRef.value.muted = true;
+
     audioRef.value.play()
-      .then(() => isPlaying.value = true)
-      .catch(() => isPlaying.value = false);
+      .then(() => {
+        // 🔥 Unmute after play starts
+        setTimeout(() => {
+          audioRef.value.muted = false;
+          isPlaying.value = true;
+        }, 500);
+      })
+      .catch(() => {
+        isPlaying.value = false;
+      });
   }
 
   updateCountdown();
