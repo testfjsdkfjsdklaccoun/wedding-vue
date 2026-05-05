@@ -1,6 +1,32 @@
 <template>
   <div class="min-h-screen bg-zinc-900 text-white font-serif">
 
+     <!-- 🎵 MUSIC CONTROL -->
+    <div class="fixed top-4 right-4 md:top-8 md:right-8 z-50">
+      <audio ref="audioRef" src="/music.mp3" loop preload="auto"></audio>
+
+      <button
+        @click="toggleMusic"
+        class="w-10 h-10 md:w-12 md:h-12 bg-black/40 backdrop-blur-md border border-primary/50 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.3)] hover:shadow-[0_0_25px_rgba(212,175,55,0.6)] hover:bg-black/60 transition-all group"
+      >
+        <!-- PLAY -->
+        <svg v-if="!isPlaying"
+             class="w-4 h-4 md:w-5 md:h-5 text-primary group-hover:text-white ml-1"
+             fill="currentColor"
+             viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z"></path>
+        </svg>
+
+        <!-- PAUSE -->
+        <svg v-else
+             class="w-4 h-4 md:w-5 md:h-5 text-primary group-hover:text-white"
+             fill="currentColor"
+             viewBox="0 0 24 24">
+          <path d="M6 5h4v14H6zm8 0h4v14h-4z"></path>
+        </svg>
+      </button>
+    </div>
+
     <!-- 🌌 MAIN CONTAINER -->
     <section class="relative min-h-screen">
 
@@ -8,7 +34,7 @@
       <img src="/hero.jpg"
            class="absolute top-0 left-0 w-full h-full object-cover object-top z-0"/>
 
-      <!-- 🌑 DARK OVERLAY (FIXED) -->
+      <!-- 🌑 DARK OVERLAY -->
       <div class="absolute inset-0 bg-black/40 z-10"></div>
 
       <!-- 🏮 FLOATING LANTERNS -->
@@ -17,7 +43,7 @@
              :key="i"
              class="absolute"
              :style="getLanternStyle(i)">
-          <img src="https://cdn-icons-png.flaticon.com/512/869/869636.png"
+          <img src="/lalten.jpg"
                class="w-12 opacity-80 animate-float-slow"/>
         </div>
       </div>
@@ -30,16 +56,16 @@
         </h2>
 
         <h1 class="text-6xl md:text-8xl italic leading-tight">
-          XYZ
+          Shyam
           <span class="block text-pink-500">&</span>
-          Partner
+          Shraddha
         </h1>
 
         <p class="mt-6 text-lg opacity-80">
           Are Getting Married
         </p>
 
-        <p class="mt-2 text-xl">12 December 2026</p>
+        <p class="mt-2 text-xl">10 May 2026</p>
 
       </div>
 
@@ -62,7 +88,7 @@
             <div class="w-1/2 pr-10 text-right">
               <div class="event-card">
                 <h3>Haldi</h3>
-                <p>20 April 2026</p>
+                <p>08 May 2026</p>
                 <span>9:00 AM</span>
               </div>
             </div>
@@ -72,7 +98,7 @@
             <div class="w-1/2 pl-10 text-left">
               <div class="event-card">
                 <h3>Sangeet</h3>
-                <p>19 April 2026</p>
+                <p>09 May 2026</p>
                 <span>8:00 PM</span>
               </div>
             </div>
@@ -82,7 +108,7 @@
             <div class="w-1/2 pr-10 text-right">
               <div class="event-card">
                 <h3>Wedding</h3>
-                <p>20 April 2026</p>
+                <p>10 May 2026</p>
                 <span>8:00 PM</span>
               </div>
             </div>
@@ -91,6 +117,15 @@
         </div>
       </div>
 
+      <!-- 💌 MESSAGE -->
+      <div class="relative z-20 text-center py-24 px-6">
+        <h2 class="text-4xl text-gold mb-6">A Message from the Couple</h2>
+        <p class="max-w-3xl mx-auto text-white/80 leading-loose">
+          With hearts full of love and excitement, we invite you to be a part of our special day as we begin our beautiful journey together. Your presence will mean the world to us as we celebrate love, laughter, and a lifetime of togetherness. Join us on May 9th and 10th at Madhuvan Garden to bless us as we step into this new chapter of our lives.
+        </p>
+      </div>
+
+      
       <!-- 🖼️ GALLERY -->
       <div class="relative z-20 py-20 px-6">
         <h2 class="text-center text-4xl text-gold mb-10">Gallery</h2>
@@ -103,22 +138,38 @@
         </div>
       </div>
 
-      <!-- 💌 MESSAGE -->
-      <div class="relative z-20 text-center py-24 px-6">
-        <h2 class="text-4xl text-gold mb-6">A Message from the Couple</h2>
-        <p class="max-w-3xl mx-auto text-white/80 leading-loose">
-          With hearts full of love and excitement, we invite you to be a part of our special day.
-        </p>
+      
+
+      <!-- 💍 YOUR ADDED SECTION (ABOVE COUNTDOWN) -->
+      <div class="relative z-20 py-20 px-4 text-center">
+        <div class="mx-auto w-screen md:w-[96vw]">
+          <div class="relative w-full">
+
+            <!-- RING IMAGE -->
+            <img src="/ring.jpg"
+                 class="w-full object-contain opacity-80 z-40" />
+
+            <!-- NAMES -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+              <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif italic text-white/90 drop-shadow-md">
+                Shyam
+                <span class="block text-3xl md:text-5xl lg:text-6xl my-4">&</span>
+                Shraddha
+              </h1>
+            </div>
+
+          </div>
+        </div>
       </div>
 
       <!-- ⏳ COUNTDOWN -->
-      <div class="relative z-20 text-center py-24">
-        <h2 class="text-4xl text-gold mb-6">The countdown begins</h2>
+<div class="relative z-20 text-center py-24">
+  <h2 class="text-4xl text-gold mb-6">The countdown begins</h2>
 
-        <div class="text-5xl tracking-widest">
-          10 : 05 : 40 : 59
-        </div>
-      </div>
+  <div class="text-5xl tracking-widest">
+    {{ days }} : {{ hours }} : {{ minutes }} : {{ seconds }}
+  </div>
+</div>
 
       <!-- 📍 LOCATION -->
       <div class="relative z-20 py-16 px-6">
@@ -133,6 +184,64 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onUnmounted } from "vue";
+
+/* 🎵 MUSIC */
+const audioRef = ref(null);
+const isPlaying = ref(false);
+
+const toggleMusic = () => {
+  if (!audioRef.value) return;
+
+  if (isPlaying.value) {
+    audioRef.value.pause();
+  } else {
+    audioRef.value.play();
+  }
+
+  isPlaying.value = !isPlaying.value;
+};
+
+onMounted(() => {
+  if (audioRef.value) {
+    audioRef.value.play()
+      .then(() => isPlaying.value = true)
+      .catch(() => isPlaying.value = false);
+  }
+
+  updateCountdown();
+  interval = setInterval(updateCountdown, 1000);
+});
+
+/* ⏳ COUNTDOWN */
+const days = ref("00");
+const hours = ref("00");
+const minutes = ref("00");
+const seconds = ref("00");
+
+let interval;
+
+const updateCountdown = () => {
+  const weddingDate = new Date("May 10, 2026 00:00:00").getTime();
+  const now = new Date().getTime();
+  const diff = weddingDate - now;
+
+  if (diff <= 0) {
+    clearInterval(interval);
+    return;
+  }
+
+  days.value = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, "0");
+  hours.value = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, "0");
+  minutes.value = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, "0");
+  seconds.value = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
+};
+
+onUnmounted(() => {
+  clearInterval(interval);
+});
+
+/* 🏮 LANTERN */
 const getLanternStyle = (i) => {
   return {
     left: (i * 7) % 100 + "%",
@@ -147,7 +256,6 @@ const getLanternStyle = (i) => {
   color: #D4AF37;
 }
 
-/* ✨ FLOAT */
 @keyframes floatSlow {
   0% { transform: translateY(0); }
   100% { transform: translateY(-200vh); }
@@ -157,7 +265,35 @@ const getLanternStyle = (i) => {
   animation: floatSlow 25s linear infinite;
 }
 
-/* 🎬 EVENT CARD */
+.event-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(212,175,55,0.5);
+  padding: 20px;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  transition: 0.4s;
+}
+
+.event-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(212,175,55,0.6);
+}
+</style>
+
+<style>
+.text-gold {
+  color: #D4AF37;
+}
+
+@keyframes floatSlow {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-200vh); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 25s linear infinite;
+}
+
 .event-card {
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(212,175,55,0.5);
