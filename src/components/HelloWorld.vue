@@ -78,44 +78,152 @@
       </div>
 
       <!-- 🎬 EVENTS -->
-      <div class="relative z-20 py-24">
+      <div class="relative z-20 py-24 overflow-hidden">
 
-        <div class="absolute left-1/2 top-0 w-[2px] h-full bg-gradient-to-b from-gold via-white/30 to-gold"></div>
+  <!-- Curved SVG Path -->
+  <div class="absolute inset-0 flex justify-center pointer-events-none">
 
-        <div class="space-y-24">
+    <svg
+      class="h-full w-[300px] md:w-[400px]"
+      viewBox="0 0 100 1000"
+      preserveAspectRatio="none"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
 
-          <div class="flex justify-start">
-            <div class="w-1/2 pr-10 text-right">
-              <div class="event-card">
-                <h3>Haldi</h3>
-                <p>08 May 2026</p>
-                <span>9:00 AM</span>
-              </div>
-            </div>
-          </div>
+      <!-- Dotted Background Path -->
+      <path
+        d="M 50,20 
+           C 90,80 90,140 50,200 
+           C 10,260 10,320 50,380 
+           C 90,440 90,500 50,560 
+           C 10,620 10,680 50,740 
+           C 90,800 90,860 50,920"
+        stroke="#d6c2a8"
+        stroke-width="2"
+        stroke-dasharray="6 6"
+        fill="none"
+      />
 
-          <div class="flex justify-end">
-            <div class="w-1/2 pl-10 text-left">
-              <div class="event-card">
-                <h3>Sangeet</h3>
-                <p>09 May 2026</p>
-                <span>8:00 PM</span>
-              </div>
-            </div>
-          </div>
+      <!-- Golden Animated Path -->
+      <path
+        d="M 50,20 
+           C 90,80 90,140 50,200 
+           C 10,260 10,320 50,380 
+           C 90,440 90,500 50,560 
+           C 10,620 10,680 50,740 
+           C 90,800 90,860 50,920"
+        stroke="url(#goldGradient)"
+        stroke-width="4"
+        stroke-linecap="round"
+        fill="none"
+        pathLength="1"
+        stroke-dasharray="0.25 1"
+      />
 
-          <div class="flex justify-start">
-            <div class="w-1/2 pr-10 text-right">
-              <div class="event-card">
-                <h3>Wedding</h3>
-                <p>10 May 2026</p>
-                <span>8:00 PM</span>
-              </div>
-            </div>
-          </div>
+      <!-- Gradient -->
+      <defs>
+        <linearGradient
+          id="goldGradient"
+          x1="0"
+          y1="0"
+          x2="0"
+          y2="1000"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#D4AF37" />
+          <stop offset="0.5" stop-color="#F3E5AB" />
+          <stop offset="1" stop-color="#D4AF37" />
+        </linearGradient>
+      </defs>
 
+    </svg>
+  </div>
+
+  <!-- Timeline Content -->
+  <div class="relative z-20 space-y-28">
+
+    <!-- Haldi -->
+    <div class="flex justify-start items-center relative">
+
+      <!-- Floating Circle -->
+      <div class="absolute left-1/2 -translate-x-1/2 z-30">
+        <div class="w-14 h-14 rounded-full border-4 border-[#D4AF37] bg-white shadow-xl flex items-center justify-center text-2xl">
+          🌼
         </div>
       </div>
+
+      <div class="w-1/2 pr-12 text-right">
+        <div class="event-card bg-white/10 backdrop-blur-md p-6 rounded-3xl border border-white/20 shadow-xl">
+          <h3 class="text-2xl font-bold text-[#D4AF37] mb-2">
+            Haldi
+          </h3>
+          <p class="text-white/80">
+            08 May 2026
+          </p>
+          <span class="text-sm text-white/60">
+            9:00 AM
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Sangeet -->
+    <div class="flex justify-end items-center relative">
+
+      <!-- Floating Circle -->
+      <div class="absolute left-1/2 -translate-x-1/2 z-30">
+        <div class="w-14 h-14 rounded-full border-4 border-[#D4AF37] bg-white shadow-xl flex items-center justify-center text-2xl">
+          🎵
+        </div>
+      </div>
+
+      <div class="w-1/2 pl-12 text-left">
+        <div class="event-card bg-white/10 backdrop-blur-md p-6 rounded-3xl border border-white/20 shadow-xl">
+          <h3 class="text-2xl font-bold text-[#D4AF37] mb-2">
+            Sangeet
+          </h3>
+          <p class="text-white/80">
+            09 May 2026
+          </p>
+          <span class="text-sm text-white/60">
+            8:00 PM
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Wedding -->
+    <div class="flex justify-start items-center relative">
+
+      <!-- Floating Circle -->
+      <div class="absolute left-1/2 -translate-x-1/2 z-30">
+        <div class="w-14 h-14 rounded-full border-4 border-[#D4AF37] bg-white shadow-xl flex items-center justify-center text-2xl">
+          💍
+        </div>
+      </div>
+
+      <div class="w-1/2 pr-12 text-right">
+        <div class="event-card bg-white/10 backdrop-blur-md p-6 rounded-3xl border border-white/20 shadow-xl">
+          <h3 class="text-2xl font-bold text-[#D4AF37] mb-2">
+            Wedding
+          </h3>
+          <p class="text-white/80">
+            10 May 2026
+          </p>
+          <span class="text-sm text-white/60">
+            8:00 PM
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
 
       <!-- 💌 MESSAGE -->
       <div class="relative z-20 text-center py-24 px-6">
